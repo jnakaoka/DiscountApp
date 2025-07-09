@@ -1,0 +1,13 @@
+# Pastas e arquivos do Visual Studio
+.vs/
+*.user
+*.suo
+
+# Pastas de build do .NET
+bin/
+obj/
+
+# Outras pastas comuns
+*.DS_Store
+*.log
+.env
