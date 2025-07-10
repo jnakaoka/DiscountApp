@@ -18,7 +18,8 @@ public class TcpServer
     {
         _generator = generator;
         _usage = usage;
-        _listener = new TcpListener(IPAddress.Loopback, port);
+        //_listener = new TcpListener(IPAddress.Loopback, port);
+        _listener = new TcpListener(IPAddress.Any, 5000);
     }
 
     public void Start()

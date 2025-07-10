@@ -17,18 +17,19 @@ while (true)
 
     try
     {
-        using var client = new TcpClient();
-        await client.ConnectAsync("127.0.0.1", 5000);
-        using var stream = client.GetStream();
-        using var writer = new BinaryWriter(stream);
-        using var reader = new BinaryReader(stream);
+        var serverHost = Environment.GetEnvironmentVariable("SERVER_HOST") ?? "127.0.0.1";
+        var client = new TcpClient();
+        await client.ConnectAsync(serverHost, 5000);
+        var stream = client.GetStream();
+        var writer = new BinaryWriter(stream);
+        var reader = new BinaryReader(stream);
 
         if (input == "1")
         {
             Console.Write("How many codes do you want to generate?");
-            ushort count = ushort.Parse(Console.ReadLine() ?? "1");
+            short count = short.Parse(Console.ReadLine() ?? "1");
 
-            Console.Write("Size of each code (8 recommended):");
+            Console.Write("Size of each code, it must be between 7 or 8 (8 recommended):");
             byte length = byte.Parse(Console.ReadLine() ?? "8");
 
             writer.Write((byte)1);
